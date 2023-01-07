@@ -1,4 +1,11 @@
-import { createContext, ReactNode, useEffect, useMemo, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { sinopeApi } from "../sinope-api";
 
 interface Transaction {
@@ -12,6 +19,7 @@ interface Transaction {
 
 export interface TransactionContextType {
   transactions: Transaction[];
+  fetchTransactions: (query?: string) => Promise<void>;
 }
 
 interface TransactionsProviverProps {
@@ -23,21 +31,28 @@ export const TransactionsContext = createContext({} as TransactionContextType);
 export function TransactionsProviver({ children }: TransactionsProviverProps) {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
 
+  const fetchTransactions = useCallback<
+    TransactionContextType["fetchTransactions"]
+  >(async (query) => {
+    const response = await sinopeApi.get("transactions", {
+      params: {
+        q: query,
+      },
+    });
+
+    setTransactions(response.data);
+  }, []);
+
   const contextValue = useMemo<TransactionContextType>(
     () => ({
       transactions,
+      fetchTransactions,
     }),
-    [transactions]
+    [transactions, fetchTransactions]
   );
 
-  async function loadTransactions() {
-    const response = await sinopeApi.get("transactions");
-
-    setTransactions(response.data);
-  }
-
   useEffect(() => {
-    loadTransactions();
+    fetchTransactions();
   }, []);
 
   return (

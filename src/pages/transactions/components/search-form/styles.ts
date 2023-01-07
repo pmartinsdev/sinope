@@ -9,7 +9,7 @@ export const SearchFormContainer = styled.form`
     border: 0;
     border-radius: 6px;
     background: ${({ theme }) => theme["gray-900"]};
-    color: ${({ theme }) => theme["green-300"]};
+    color: ${({ theme }) => theme["gray-300"]};
     padding: 1rem;
 
     &::placeholder {
