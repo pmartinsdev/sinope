@@ -1,6 +1,4 @@
-<img src="https://www.figma.com/file/NjdY59uC8JsozxgCd2fSYi/DT-Money-(Community)?node-id=42078%3A437&t=zHfydtRQFbqbBGCl-4" alt="sinope logo with letter S with green color and the rest of letters with white color"/>
-
-<h1 align="center">Sinope</h1>
+<img src="https://user-images.githubusercontent.com/55673235/211171718-c66ad387-081a-430f-a8d9-68b288fcc67c.svg" alt="sinope logo with letter S with green color and the rest of letters with white color"/>
 
 ---
 
@@ -15,6 +13,14 @@ Basicaly we have 3 choices.
 3. Just clone this repository and run in your machine.
 
 #### The choice is up to you 😉
+
+---
+
+## Screenshots
+
+<b>Dashboard</b>
+![Dashboard](https://user-images.githubusercontent.com/55673235/211171781-59174c36-9d37-409d-beaf-31859c669c69.png)
+
 
 ---
 
