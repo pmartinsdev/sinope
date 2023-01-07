@@ -36,13 +36,17 @@ Basicaly we have 3 choices.
   yarn test # or npm run test
 ```
 
-3. Then run the project into development mode using `dev` script;
+3. Run the project JSON server into another terminal;
+
+```bash
+  yarn dev:server # or npm run dev:server
+```
+
+4. Then run the project into development mode using `dev` script;
 
 ```bash
   yarn dev # or npm run dev
 ```
-
-> 💡 If you build the project you need to use `start` script to build project from dist folder.
 
 <br/>
 
