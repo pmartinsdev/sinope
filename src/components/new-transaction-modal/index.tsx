@@ -32,7 +32,7 @@ export function NewTransactionModal() {
               Income
             </TransactionTypeButton>
 
-            <TransactionTypeButton variant="outcome" valur="outcome">
+            <TransactionTypeButton variant="outcome" value="outcome">
               <ArrowCircleDown size={24} />
               Outcome
             </TransactionTypeButton>
