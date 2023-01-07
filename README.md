@@ -19,8 +19,19 @@ Basicaly we have 3 choices.
 ## Screenshots
 
 <b>Dashboard</b>
-![Dashboard](https://user-images.githubusercontent.com/55673235/211171781-59174c36-9d37-409d-beaf-31859c669c69.png)
+<div style="display: flex;">
+  <img src="https://user-images.githubusercontent.com/55673235/211171781-59174c36-9d37-409d-beaf-31859c669c69.png" height="500px" />
+  <img src="https://user-images.githubusercontent.com/55673235/211172104-2f9edbc5-e0ed-48f4-bc51-8e48faa58f4b.png" height="500px"/>
+</div>
 
+<br>
+
+<b>Creating a new Transaction</b>
+
+<div style="display: flex;">
+  <img src="https://user-images.githubusercontent.com/55673235/211172321-7445a3b9-81c6-4fa3-bd1f-21412887255c.png" height="500px" />
+  <img src="https://user-images.githubusercontent.com/55673235/211172244-249e2f60-e7a6-4f24-b8eb-22ffec19df02.png" height="500px" />
+</div>
 
 ---
 
