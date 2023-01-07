@@ -10,7 +10,7 @@ interface Transaction {
   createdAt: string;
 }
 
-interface TransactionContextType {
+export interface TransactionContextType {
   transactions: Transaction[];
 }
 

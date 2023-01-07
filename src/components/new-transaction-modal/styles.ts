@@ -99,7 +99,7 @@ export const TransactionTypeButton = styled(
       variant === "income" ? theme["green-300"] : theme["red-300"]};
   }
 
-  &[data-state="unchecked"]:hover {
+  &[data-state="unchecked"]:not(:disabled):hover {
     transition: background 0.2s;
     background: ${({ theme }) => theme["gray-600"]};
   }
@@ -112,5 +112,10 @@ export const TransactionTypeButton = styled(
     svg {
       color: ${({ theme }) => theme["white"]};
     }
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-alowed;
   }
 `;
