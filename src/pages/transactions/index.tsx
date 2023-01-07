@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { Header } from "../../components/header";
 import { Summary } from "../../components/summary";
-import { sinopeApi } from "../../sinope-api";
+import { useTransactions } from "../../contexts/transactions";
 import { SearchForm } from "./components/search-form";
 
 import {
@@ -11,27 +11,8 @@ import {
   TransactionsTable,
 } from "./styles";
 
-interface Transaction {
-  id: number;
-  description: string;
-  type: "income" | "outcome";
-  price: number;
-  category: string;
-  createdAt: string;
-}
-
 export function Transactions() {
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
-
-  async function loadTransactions() {
-    const response = await sinopeApi.get("transactions");
-
-    setTransactions(response.data);
-  }
-
-  useEffect(() => {
-    loadTransactions();
-  }, []);
+  const { transactions } = useTransactions();
 
   return (
     <div>
