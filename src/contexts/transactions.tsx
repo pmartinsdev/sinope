@@ -1,11 +1,4 @@
-import {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { createContext, ReactNode, useEffect, useMemo, useState } from "react";
 import { sinopeApi } from "../sinope-api";
 
 interface Transaction {
@@ -25,7 +18,7 @@ interface TransactionsProviverProps {
   children: ReactNode;
 }
 
-const TransactionsContext = createContext({} as TransactionContextType);
+export const TransactionsContext = createContext({} as TransactionContextType);
 
 export function TransactionsProviver({ children }: TransactionsProviverProps) {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
@@ -52,13 +45,4 @@ export function TransactionsProviver({ children }: TransactionsProviverProps) {
       {children}
     </TransactionsContext.Provider>
   );
-}
-
-export function useTransactions(): TransactionContextType {
-  const context = useContext(TransactionsContext);
-
-  if (!context)
-    throw new Error("Cannot use transactions context without him provider");
-
-  return context;
 }

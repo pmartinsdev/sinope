@@ -4,8 +4,8 @@ import { Header } from "../../components/header";
 import { Summary } from "../../components/summary";
 import { SearchForm } from "./components/search-form";
 
+import { useTransactions } from "../../hooks/useTransactions";
 import { dateFormatter, priceFormatter } from "../../utils/formatter";
-import { useTransactions } from "../../contexts/transactions";
 
 import {
   PriceHightlight,

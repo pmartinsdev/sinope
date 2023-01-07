@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { ArrowCircleDown, ArrowCircleUp, CurrencyDollar } from "phosphor-react";
 
 import { priceFormatter } from "../../utils/formatter";
-import { useTransactions } from "../../contexts/transactions";
+import { useTransactions } from "../../hooks/useTransactions";
 
 import { SummaryContainer, SummaryCard } from "./styles";
 
