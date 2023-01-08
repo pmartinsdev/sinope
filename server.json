@@ -17,6 +17,30 @@
       "price": 60,
       "createdAt": "2023-01-07T10:13:12.852Z",
       "updatedAt": "2023-01-07T10:13:12.852Z"
+    },
+    {
+      "type": "income",
+      "price": 1000,
+      "category": "Development",
+      "description": "Test",
+      "createdAt": "2023-01-08T16:22:41.836Z",
+      "id": 3
+    },
+    {
+      "type": "outcome",
+      "price": 12345,
+      "category": "Development",
+      "description": "Other test",
+      "createdAt": "2023-01-08T16:25:33.422Z",
+      "id": 4
+    },
+    {
+      "type": "income",
+      "price": 123,
+      "category": "Development",
+      "description": "Test",
+      "createdAt": "2023-01-08T16:33:26.529Z",
+      "id": 5
     }
   ]
 }

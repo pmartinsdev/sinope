@@ -11,6 +11,8 @@ import {
   TransactionType,
   TransactionTypeButton,
 } from "./styles";
+import { sinopeApi } from "../../lib/sinope-api";
+import { useTransactions } from "../../hooks/useTransactions";
 
 const newTransactionFormSchema = z.object({
   description: z.string(),
@@ -23,6 +25,7 @@ type NewTransactionFormInputs = z.infer<typeof newTransactionFormSchema>;
 
 export function NewTransactionModal() {
   const {
+    reset,
     control,
     register,
     handleSubmit,
@@ -34,8 +37,12 @@ export function NewTransactionModal() {
     },
   });
 
+  const { createTransaction: createNewTransaction } = useTransactions();
+
   async function handleCreateNewTransaction(data: NewTransactionFormInputs) {
-    console.log(data);
+    await createNewTransaction(data);
+
+    reset();
   }
 
   return (

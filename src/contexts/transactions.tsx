@@ -18,8 +18,16 @@ interface Transaction {
   createdAt: string;
 }
 
+interface CreateTransaction {
+  description: string;
+  price: number;
+  category: string;
+  type: "income" | "outcome";
+}
+
 export interface TransactionContextType {
   transactions: Transaction[];
+  createTransaction: (payload: CreateTransaction) => Promise<void>;
   fetchTransactions: (query?: string) => Promise<void>;
 }
 
@@ -38,18 +46,38 @@ export function TransactionsProviver({ children }: TransactionsProviverProps) {
     const response = await sinopeApi.get("transactions", {
       params: {
         q: query,
+        _order: "desc",
+        _sort: "createdAt",
       },
     });
 
     setTransactions(response.data);
   }, []);
 
+  const createNewTransaction = useCallback<
+    TransactionContextType["createTransaction"]
+  >(async (data) => {
+    const { type, price, category, description } = data;
+
+    const response = await sinopeApi.post("transactions", {
+      type,
+      price,
+      category,
+      description,
+      // Remove this field if we already have a real backend server
+      createdAt: new Date(),
+    });
+
+    setTransactions((state) => [...state, response.data]);
+  }, []);
+
   const contextValue = useMemo<TransactionContextType>(
     () => ({
       transactions,
       fetchTransactions,
+      createTransaction: createNewTransaction,
     }),
-    [transactions, fetchTransactions]
+    [transactions, fetchTransactions, createNewTransaction]
   );
 
   useEffect(() => {
