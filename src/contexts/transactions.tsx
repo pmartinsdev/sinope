@@ -6,7 +6,8 @@ import {
   useMemo,
   useState,
 } from "react";
-import { sinopeApi } from "../sinope-api";
+
+import { sinopeApi } from "../lib/sinope-api";
 
 interface Transaction {
   id: number;
