@@ -1,14 +1,14 @@
-import * as Dialog from "@radix-ui/react-dialog";
-import { HeaderContainer, HeaderContent, NewTransactionButton } from "./styles";
+import * as Dialog from '@radix-ui/react-dialog'
+import { HeaderContainer, HeaderContent, NewTransactionButton } from './styles'
 
-import logoImg from "../../assets/logo.svg";
-import { NewTransactionModal } from "../new-transaction-modal";
+import logoImg from '../../assets/logo.svg'
+import { NewTransactionModal } from '../new-transaction-modal'
 
 export function Header() {
   return (
     <HeaderContainer>
       <HeaderContent>
-        <img src={logoImg} />
+        <img src={logoImg} alt="sinope logo" />
 
         <Dialog.Root>
           <Dialog.Trigger asChild>
@@ -19,5 +19,5 @@ export function Header() {
         </Dialog.Root>
       </HeaderContent>
     </HeaderContainer>
-  );
+  )
 }

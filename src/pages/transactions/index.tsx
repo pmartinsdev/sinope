@@ -1,20 +1,18 @@
-import { useEffect, useState } from "react";
+import { Header } from '../../components/header'
+import { Summary } from '../../components/summary'
+import { SearchForm } from './components/search-form'
 
-import { Header } from "../../components/header";
-import { Summary } from "../../components/summary";
-import { SearchForm } from "./components/search-form";
-
-import { useTransactions } from "../../hooks/useTransactions";
-import { dateFormatter, priceFormatter } from "../../utils/formatter";
+import { useTransactions } from '../../hooks/useTransactions'
+import { dateFormatter, priceFormatter } from '../../utils/formatter'
 
 import {
   PriceHightlight,
   TransactionsContainer,
   TransactionsTable,
-} from "./styles";
+} from './styles'
 
 export function Transactions() {
-  const { transactions } = useTransactions();
+  const { transactions } = useTransactions()
 
   return (
     <div>
@@ -31,7 +29,7 @@ export function Transactions() {
                 <td width="50%">{transaction.description}</td>
                 <td>
                   <PriceHightlight variant={transaction.type}>
-                    {transaction.type === "outcome" && "- "}
+                    {transaction.type === 'outcome' && '- '}
                     {priceFormatter.format(transaction.price)}
                   </PriceHightlight>
                 </td>
@@ -43,5 +41,5 @@ export function Transactions() {
         </TransactionsTable>
       </TransactionsContainer>
     </div>
-  );
+  )
 }
