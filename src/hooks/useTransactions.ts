@@ -1,15 +1,19 @@
-import { useContext } from 'react'
-
+import { useContextSelector } from 'use-context-selector'
 import {
-  TransactionContextType,
+  TransactionContextData,
   TransactionsContext,
 } from '../contexts/transactions'
 
-export function useTransactions(): TransactionContextType {
-  const context = useContext(TransactionsContext)
+export function useTransactions<T extends keyof TransactionContextData>(
+  value: T,
+): TransactionContextData[T] {
+  const context = useContextSelector(
+    TransactionsContext,
+    (context) => context[value],
+  )
 
   if (!context)
-    throw new Error('Cannot use transactions context without him provider')
+    throw new Error('Unable to use transaction context without provider')
 
   return context
 }

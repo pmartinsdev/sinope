@@ -36,7 +36,7 @@ export function NewTransactionModal() {
     },
   })
 
-  const { createTransaction: createNewTransaction } = useTransactions()
+  const createNewTransaction = useTransactions('createTransaction')
 
   async function handleCreateNewTransaction(data: NewTransactionFormInputs) {
     await createNewTransaction(data)

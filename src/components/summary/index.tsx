@@ -7,7 +7,7 @@ import { useTransactions } from '../../hooks/useTransactions'
 import { SummaryContainer, SummaryCard } from './styles'
 
 export function Summary() {
-  const { transactions } = useTransactions()
+  const transactions = useTransactions('transactions')
 
   const summary = useMemo(
     () =>

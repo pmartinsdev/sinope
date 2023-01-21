@@ -1,11 +1,5 @@
-import {
-  createContext,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react'
+import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react'
+import { createContext } from 'use-context-selector'
 
 import { sinopeApi } from '../lib/sinope-api'
 
@@ -25,7 +19,7 @@ interface CreateTransaction {
   type: 'income' | 'outcome'
 }
 
-export interface TransactionContextType {
+export interface TransactionContextData {
   transactions: Transaction[]
   createTransaction: (payload: CreateTransaction) => Promise<void>
   fetchTransactions: (query?: string) => Promise<void>
@@ -35,13 +29,13 @@ interface TransactionsProviverProps {
   children: ReactNode
 }
 
-export const TransactionsContext = createContext({} as TransactionContextType)
+export const TransactionsContext = createContext({} as TransactionContextData)
 
 export function TransactionsProviver({ children }: TransactionsProviverProps) {
   const [transactions, setTransactions] = useState<Transaction[]>([])
 
   const fetchTransactions = useCallback<
-    TransactionContextType['fetchTransactions']
+    TransactionContextData['fetchTransactions']
   >(async (query) => {
     const response = await sinopeApi.get('transactions', {
       params: {
@@ -55,7 +49,7 @@ export function TransactionsProviver({ children }: TransactionsProviverProps) {
   }, [])
 
   const createNewTransaction = useCallback<
-    TransactionContextType['createTransaction']
+    TransactionContextData['createTransaction']
   >(async (data) => {
     const { type, price, category, description } = data
 
@@ -71,7 +65,7 @@ export function TransactionsProviver({ children }: TransactionsProviverProps) {
     setTransactions((state) => [...state, response.data])
   }, [])
 
-  const contextValue = useMemo<TransactionContextType>(
+  const contextValue = useMemo<TransactionContextData>(
     () => ({
       transactions,
       fetchTransactions,
@@ -83,7 +77,7 @@ export function TransactionsProviver({ children }: TransactionsProviverProps) {
   useEffect(() => {
     fetchTransactions()
     // eslint-disable-next-line
-  }, []);
+  }, [])
 
   return (
     <TransactionsContext.Provider value={contextValue}>
